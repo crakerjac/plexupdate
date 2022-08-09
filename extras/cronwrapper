@@ -59,6 +59,14 @@ if [ $RET -ne 0 ] ; then
 	# Make sure user gets an email about this (when not success or if user has specified when)
 	cat ${LOGFILE} >&2
 
+	if [ -z "${SRC_EMAIL}" ]; then
+		echo "ERROR: Cannot find SRC_EMAIL" >&2
+	elif [ -z "${DEST_EMAIL}" ]; then
+		echo "ERROR: Cannot find DEST_EMAIL" >&2
+	else
+		subject=$(cat ${LOGFILE} | grep "Errors:")
+		cat "$LOGFILE" | mail -r "${SRC_EMAIL}" -s "$subject" "${DEST_EMAIL}"
+
 	# Output will produce a cron email, so we can reset the exit status
 	if [ $RET -eq 10 ]; then
 		RET=0
