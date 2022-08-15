@@ -66,6 +66,7 @@ if [ $RET -ne 0 ] ; then
 	else
 		subject=$(cat ${LOGFILE} | grep "Errors:")
 		cat "$LOGFILE" | mail -r "${SRC_EMAIL}" -s "$subject" "${DEST_EMAIL}"
+	fi
 
 	# Output will produce a cron email, so we can reset the exit status
 	if [ $RET -eq 10 ]; then
