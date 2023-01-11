@@ -58,6 +58,8 @@ fi
 if [ $RET -ne 0 ] ; then
 	# Make sure user gets an email about this (when not success or if user has specified when)
 	cat ${LOGFILE} >&2
+	echo "" >> $LOGFILE
+	echo "https://forums.plex.tv/t/plex-media-server/30447/9999" >> $LOGFILE
 
 	if [ -z "${SRC_EMAIL}" ]; then
 		echo "ERROR: Cannot find SRC_EMAIL" >&2
