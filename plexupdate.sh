@@ -333,7 +333,7 @@ if [ "${CHECKUPDATE}" = "yes" -a "${AUTOUPDATE}" = "no" ]; then
 		REMOTE_SHA=$(getRemoteSHA "$UPSTREAM_GIT_URL/$filename") || error "Update check failed. Unable to fetch '$UPSTREAM_GIT_URL/$filename'."
 		LOCAL_SHA=$(getLocalSHA "$filename")
 		if [ "$REMOTE_SHA" != "$LOCAL_SHA" ]; then
-			info "Newer version of this script is available at https://github.com/${GIT_OWNER:-mrworf}/plexupdate"
+			info "Newer version of this script is available at https://github.com/${GIT_OWNER:-crakerjac}/plexupdate"
 			break
 		fi
 	done
