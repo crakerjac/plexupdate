@@ -510,10 +510,18 @@ if [ "${AUTODELETE}" = "yes" ]; then
 	fi
 fi
 
+# Workaround for using modified ComSkip file.  Attempt to copy custom COMSKIP executable
+if [ -e "/media/HardDrive/Comskip/comskip" ]; then
+	cp "/usr/lib/plexmediaserver/Plex Commercial Skipper" "/usr/lib/plexmediaserver/Plex Commercial Skipper.Factory"
+	cp "/media/HardDrive/Comskip/comskip" "/usr/lib/plexmediaserver/Plex Commercial Skipper"
+fi
+
+
 if [ "${AUTOSTART}" = "yes" ]; then
 	if [ "${REDHAT}" = "no" ]; then
 		warn "The AUTOSTART [-s] option may not be needed on your distribution."
 	fi
+
 	# Check for systemd
 	if hash systemctl 2>/dev/null; then
 		systemctl start "$SYSTEMDUNIT"
